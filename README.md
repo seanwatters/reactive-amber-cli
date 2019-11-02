@@ -67,7 +67,7 @@ This will generate a file in the `frontend-react/src/components/`:
     |- index.js
 ```
 
-_keep in mind that this is not a substitution for [React devtools](https://reactjs.org/blog/2019/08/15/new-react-devtools.html), but is a suplimental tool for development with **Reactive Amber**.
+_keep in mind that this is not a substitution for [React devtools](https://reactjs.org/blog/2019/08/15/new-react-devtools.html), but is a suplimental tool for development with **Reactive Amber**._
 
 ## License
 
