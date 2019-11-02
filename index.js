@@ -8,10 +8,12 @@ const component = (name, state = null, props = null) => {
   let templatePath = path.join(__dirname, '../../frontend-react/dev/templates/component.js');
   fs.readFile(testPath, {encoding: 'utf-8'}, (err, data) => {
     if (!err && !data.replace(/\s/g, '').length == 0) {
-      write.sync(`frontend-react/src/components/${name}.js`, data, { overwrite: false })
+      write.sync(`frontend-react/src/components/${name}/index.js`, data, { overwrite: false })
+      write.sync(`frontend-react/src/components/${name}/index.css`, '', { overwrite: false })
       console.log('componenet created with template')
     } else {
-      write.sync(`frontend-react/src/components/${name}.js`, '', { overwrite: false })
+      write.sync(`frontend-react/src/components/${name}/index.js`, '', { overwrite: false })
+      write.sync(`frontend-react/src/components/${name}/index.css`, '', { overwrite: false })
       console.log('created without componenet template')
     }
   })
@@ -26,10 +28,12 @@ const scaffold = (model, attributes) => {
   const readWrite = (templatePath, type) => {
     fs.readFile(templatePath, {encoding: 'utf-8'}, (err, data) => {
       if (!err && !data.replace(/\s/g, '').length == 0) {
-        write.sync(`frontend-react/src/views/${model}/${type}.js`, data, { overwrite: false })
+        write.sync(`frontend-react/src/views/${model}/${type}/index.js`, data, { overwrite: false })
+        write.sync(`frontend-react/src/views/${model}/${type}/index.css`, '', { overwrite: false })
         console.log('componenet created with template')
       } else {
-        write.sync(`frontend-react/src/views/${model}/${type}.js`, '', { overwrite: false })
+        write.sync(`frontend-react/src/views/${model}/${type}/index.js`, '', { overwrite: false })
+        write.sync(`frontend-react/src/views/${model}/${type}/index.css`, '', { overwrite: false })
         console.log('created without componenet template')
       }
     })
