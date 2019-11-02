@@ -55,7 +55,7 @@ const api = (model, attributes) => {
   });
 };
 
-module.exports.js_tools = () => {
+module.exports.react_tools = () => {
   inquirer.prompt([
     {
       type: 'list',
