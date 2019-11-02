@@ -8,7 +8,7 @@ const component = (name, state = null, props = null) => {
   let templatePath = path.join(__dirname, '../../frontend-react/dev/templates/component.js');
   fs.readFile(templatePath, {encoding: 'utf-8'}, (err, data) => {
     if (!err && !data.replace(/\s/g, '').length == 0) {
-      write.sync(`frontend-react/src/components/${name}/index.js`, data, { overwrite: false })
+      write.sync(`frontend-react/src/components/${name}/index.js`, data.replace(/comp_name/g, name), { overwrite: false })
       write.sync(`frontend-react/src/components/${name}/index.css`, '', { overwrite: false })
       console.log('componenet created with template')
     } else {
@@ -28,7 +28,7 @@ const scaffold = (model, attributes) => {
   const readWrite = (templatePath, type) => {
     fs.readFile(templatePath, {encoding: 'utf-8'}, (err, data) => {
       if (!err && !data.replace(/\s/g, '').length == 0) {
-        write.sync(`frontend-react/src/views/${model}/${type}/index.js`, data, { overwrite: false })
+        write.sync(`frontend-react/src/views/${model}/${type}/index.js`, data.replace(/comp_name/g, model), { overwrite: false })
         write.sync(`frontend-react/src/views/${model}/${type}/index.css`, '', { overwrite: false })
         console.log('componenet created with template')
       } else {
