@@ -1,0 +1,29 @@
+{
+  "name": "reactive-amber-cli",
+  "version": "0.1.0",
+  "description": "A development tool for the Reactive Amber recipe.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanwatters/reactive-amber-cli.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "amber",
+    "amberframework"
+  ],
+  "author": "Sean Watters",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seanwatters/reactive-amber-cli/issues"
+  },
+  "homepage": "https://github.com/seanwatters/reactive-amber-cli#readme",
+  "dependencies": {
+    "inquirer": "^7.0.0",
+    "write": "^2.0.0"
+  }
+}
