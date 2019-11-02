@@ -1,6 +1,6 @@
 {
   "name": "reactive-amber-cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A development tool for the Reactive Amber recipe.",
   "main": "index.js",
   "scripts": {
