@@ -1,6 +1,6 @@
 <img src="https://camo.githubusercontent.com/97b4f26bedb5faf9f9eb71296095f78b557b124c/68747470733a2f2f7365616e776174746572732e696f2f696d616765732f72656163746976652d616d6265722d6c6162656c2e706e67" alt="reactive-amber" data-canonical-src="https://seanwatters.io/images/reactive-amber-label.png" height="200">
 
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/Version-0.1.6-green.svg" ></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/Version-0.1.6-lightgrey.svg" ></a>
 
 <a href="https://amberframework.org/"><img src="https://img.shields.io/badge/using-amber_framework-black.svg" ></a>
 <a href="https://github.com/seanwatters/reactive-amber/"><img src="https://img.shields.io/badge/using-reactive_amber-darkgrey.svg" ></a>
