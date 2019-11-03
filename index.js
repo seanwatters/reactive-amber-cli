@@ -5,43 +5,59 @@ const write = require('write');
 const exec = require('child_process').exec;
 
 const component = (name, state = null, props = null) => {
-  let templatePath = path.join(__dirname, '../../frontend-react/dev/templates/component.js');
-  fs.readFile(templatePath, {encoding: 'utf-8'}, (err, data) => {
+  let JStemplatePath = path.join(__dirname, '../../frontend-react/dev/templates/component/index.js');
+  let CSStemplatePath = path.join(__dirname, '../../frontend-react/dev/templates/component/index.css');
+
+  fs.readFile(JStemplatePath, {encoding: 'utf-8'}, (err, data) => {
     if (!err && !data.replace(/\s/g, '').length == 0) {
       write.sync(`frontend-react/src/components/${name}/index.js`, data.replace(/comp_name/g, name), { overwrite: false })
-      write.sync(`frontend-react/src/components/${name}/index.css`, '', { overwrite: false })
       console.log('componenet created with template')
     } else {
       write.sync(`frontend-react/src/components/${name}/index.js`, '', { overwrite: false })
+      console.log('created without componenet template')
+    }
+  })
+  fs.readFile(CSStemplatePath, {encoding: 'utf-8'}, (err, data) => {
+    if (!err && !data.replace(/\s/g, '').length == 0) {
+      write.sync(`frontend-react/src/components/${name}/index.css`, data.replace(/comp_name/g, name), { overwrite: false })
+      console.log('componenet created with template')
+    } else {
       write.sync(`frontend-react/src/components/${name}/index.css`, '', { overwrite: false })
       console.log('created without componenet template')
     }
   })
 }
 
-const scaffold = (model, attributes) => {
-  let newTemplatePath = path.join(__dirname, '../../frontend-react/dev/templates/scaffold/new.js');
-  let editTemplatePath = path.join(__dirname, '../../frontend-react/dev/templates/scaffold/edit.js');
-  let indexTemplatePath = path.join(__dirname, '../../frontend-react/dev/templates/scaffold/index.js');
-  let showTemplatePath = path.join(__dirname, '../../frontend-react/dev/templates/scaffold/show.js');
+const scaffold = (model, attributes, file) => {
+  const templatePath = (template, file) => {
+    return path.join(__dirname, `../../frontend-react/dev/templates/scaffold/${template}/index.${file}`);
+  }
 
-  const readWrite = (templatePath, type) => {
-    fs.readFile(templatePath, {encoding: 'utf-8'}, (err, data) => {
+  const readWrite = (jsPath, cssPath, template) => {
+    console.log(jsPath)
+    fs.readFile(jsPath, {encoding: 'utf-8'}, (err, data) => {
       if (!err && !data.replace(/\s/g, '').length == 0) {
-        write.sync(`frontend-react/src/views/${model}/${type}/index.js`, data.replace(/comp_name/g, model), { overwrite: false })
-        write.sync(`frontend-react/src/views/${model}/${type}/index.css`, '', { overwrite: false })
-        console.log('componenet created with template')
+        write.sync(`frontend-react/src/views/${model}/${template}/index.js`, data.replace(/comp_name/g, model), { overwrite: false })
+        console.log('componenet created with js template')
       } else {
-        write.sync(`frontend-react/src/views/${model}/${type}/index.js`, '', { overwrite: false })
-        write.sync(`frontend-react/src/views/${model}/${type}/index.css`, '', { overwrite: false })
-        console.log('created without componenet template')
+        write.sync(`frontend-react/src/views/${model}/${template}/index.js`, '', { overwrite: false })
+        console.log('created without js template')
+      }
+    })
+    fs.readFile(cssPath, {encoding: 'utf-8'}, (err, data) => {
+      if (!err && !data.replace(/\s/g, '').length == 0) {
+        write.sync(`frontend-react/src/views/${model}/${template}/index.css`, data.replace(/comp_name/g, model), { overwrite: false })
+        console.log('componenet created with css template')
+      } else {
+        write.sync(`frontend-react/src/views/${model}/${template}/index.css`, '', { overwrite: false })
+        console.log('created without css template')
       }
     })
   }
-  readWrite(newTemplatePath, 'new');
-  readWrite(editTemplatePath, 'edit');
-  readWrite(indexTemplatePath, 'index');
-  readWrite(showTemplatePath, 'show');
+  readWrite(templatePath('edit', 'js'), templatePath('edit', 'css'), 'edit');
+  readWrite(templatePath('index', 'js'), templatePath('index', 'css'), 'index');
+  readWrite(templatePath('new', 'js'), templatePath('new', 'css'), 'new');
+  readWrite(templatePath('show', 'js'), templatePath('show', 'css'), 'show');
 
   api(model, attributes)
 }
